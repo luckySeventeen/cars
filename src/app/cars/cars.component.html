@@ -1,3 +1,11 @@
-<p>
-  cars works!
-</p>
+<div class="cars-container">
+  <div *ngFor="let item of cars" class="car-container">
+    <div
+        class="car-item"
+        [ngStyle]="{'background-image': 'url(' + item.image + ')'}"
+    >
+      <div class="title">{{item.name}}</div>
+    </div>
+  </div>
+</div>
+
