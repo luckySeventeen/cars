@@ -32,6 +32,7 @@
     <div class="line"></div>
     <div class="car"
          *ngFor=" let car of carsOnTrack let ind = index"
+         id="car{{ind}}"
          [ngStyle]=carPosition(car,ind)
     >
       <div
@@ -64,7 +65,7 @@
   </div>
   <div class="start-container">
     <input [(ngModel)]="animationSpeed" class="speed-input" type="number"/>
-    <button class="start-btn">START</button>
+    <button (click)="moveCars()" class="start-btn">START</button>
   </div>
 </div>
 

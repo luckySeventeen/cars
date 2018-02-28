@@ -53,10 +53,19 @@ export class CarsComponent implements OnInit {
 
   public carPosition(car, index) {
     const top = (index * 100) + 10;
+    setInterval(() => {
+      console.log('aaaa');
+    }, 100);
     return {
       top: top + 'px'
     };
   }
+
+public moveCars() {
+    const car1 = document.getElementById('car0');
+    console.log(car1);
+    car1.style.left = '200';
+}
 
   public signPosition(sign) {
     const left = ((sign.position / 10) * 2) * 100;
