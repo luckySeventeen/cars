@@ -14,6 +14,8 @@ export class CarsComponent implements OnInit {
   cars: Car[] = [];
   searchText: string;
   roadParts: number;
+  trafficLight: any;
+  passTheLight = false;
   carsOnTrack: any = [];
   speedLimits: any = [];
 
@@ -21,9 +23,12 @@ export class CarsComponent implements OnInit {
     console.log(data);
     this.roadParts = data.distance / 5;
     this.speedLimits = data.speed_limits;
-    console.log(this.speedLimits);
+    this.trafficLight = data.traffic_lights[0];
     this.cars = data.cars.map(c => new Car(c.image, c.speed, c.description, c.name, c.id));
-    console.log(this.cars);
+    // switch the trafficLight
+    setInterval(() => {
+      this.switchTrafficLight();
+    }, this.trafficLight.duration);
   }
 
   public getRoadParts(num) {
@@ -34,7 +39,6 @@ export class CarsComponent implements OnInit {
     if (item.isChecked) {
       if (this.carsOnTrack.length < 3) {
         this.carsOnTrack.push(item);
-        console.log(this.carsOnTrack);
       } else {
         return;
       }
@@ -44,7 +48,6 @@ export class CarsComponent implements OnInit {
           this.carsOnTrack.splice(i, 1);
         }
       }
-      console.log(this.carsOnTrack);
     }
   }
 
@@ -60,6 +63,17 @@ export class CarsComponent implements OnInit {
     return {
       left: left + 'px'
     };
+  }
+
+  public trafficLightPosition() {
+    const left = ((this.trafficLight.position / 10) * 2) * 100;
+    return {
+      left: left + 'px'
+    };
+  }
+
+  public switchTrafficLight() {
+    this.passTheLight = !this.passTheLight;
   }
 
   ngOnInit() {
