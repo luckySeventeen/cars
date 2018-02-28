@@ -120,7 +120,7 @@
     height: 300px;
     width: 1000px;
     border: 2px solid black;
-    margin: 30px auto;
+    margin: 50px auto;
     border-radius: 20px;
     position: relative;
     .line {
@@ -131,7 +131,7 @@
         border-bottom: none;
       }
     }
-    #car1 {
+    .car {
       height: 80px;
       width: 80px;
       top: 10px;
@@ -140,23 +140,17 @@
       border-radius: 20px;
       left: 10px;
     }
-    #car2 {
-      height: 80px;
-      width: 80px;
-      top: 110px;
+    .road-parts {
       position: absolute;
-      border: 2px solid black;
-      border-radius: 20px;
-      left: 10px;
-    }
-    #car3 {
-      height: 80px;
-      width: 80px;
-      top: 210px;
-      position: absolute;
-      border: 2px solid black;
-      border-radius: 20px;
-      left: 10px;
+      top: -25px;
+      display: flex;
+      height: 325px;
+      .road-part {
+        width: 99px;
+        border-right: 1px solid gray;
+        display: flex;
+        justify-content: flex-end;
+      }
     }
   }
 }

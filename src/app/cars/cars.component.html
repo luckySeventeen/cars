@@ -16,7 +16,7 @@
           [ngStyle]="{'background-image': 'url(' + item.image + ')'}"
           class="front back">
           <div class="black-mask">
-            <input class="check" type="checkbox"/>
+            <input [(ngModel)] = item.isChecked (change)="addCarToList(item)" class="check" type="checkbox"/>
             <div class="description">
               <span>{{item.description}}</span>
             </div>
@@ -30,9 +30,17 @@
     <div class="line"></div>
     <div class="line"></div>
     <div class="line"></div>
-    <div id="car1"></div>
-    <div id="car2"></div>
-    <div id="car3"></div>
+    <div class="car"
+         *ngFor=" let car of carsList let ind = index"
+         [ngStyle] = carPosition(car,ind)>
+      {{car.name}}
+    </div>
+    <div class="road-parts">
+      <div class="road-part" *ngFor=" let item of getRoadParts(roadParts) let i = index">
+        <div>{{5*(i+1)}}</div>
+      </div>
+    </div>
+
   </div>
 </div>
 
