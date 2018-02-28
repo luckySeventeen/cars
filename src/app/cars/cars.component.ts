@@ -36,7 +36,7 @@ export class CarsComponent implements OnInit {
         return;
       }
     } else {
-      for (let i = 0; i <= this.carsList.length) {
+      for (let i = 0; i <= this.carsList.length; i++) {
         if (this.carsList[i].id === item.id) {
           this.carsList.splice(i, 1);
         }
