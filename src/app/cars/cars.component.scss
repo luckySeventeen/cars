@@ -1,4 +1,6 @@
 .cars {
+  display: flex;
+  flex-direction: column;
   .search-container {
     width: 75%;
     margin: 20px auto;
@@ -210,6 +212,25 @@
           background-color: green
         }
       }
+    }
+  }
+  .start-container {
+    display: flex;
+    width: 90%;
+    margin: 40px auto;
+    justify-content: flex-end;
+    .speed-input {
+      height: 30px;
+      border: 2px solid black;
+      border-radius: 10px;
+      margin: 0 10px;
+      outline: none;
+    }
+    .start-btn {
+      height: 36px;
+      border: 2px solid black;
+      border-radius: 10px;
+      width: 80px;
     }
   }
 }

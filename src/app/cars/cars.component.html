@@ -61,7 +61,10 @@
         <div *ngIf="!passTheLight" class="light green"></div>
       </div>
     </div>
-
+  </div>
+  <div class="start-container">
+    <input [(ngModel)]="animationSpeed" class="speed-input" type="number"/>
+    <button class="start-btn">START</button>
   </div>
 </div>
 
