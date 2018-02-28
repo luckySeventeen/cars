@@ -21,7 +21,7 @@ export class CarsComponent implements OnInit {
     console.log(data);
     this.roadParts = data.distance / 5;
     this.speedLimits = data.speed_limits;
-    console.log(this.speedLimits)
+    console.log(this.speedLimits);
     this.cars = data.cars.map(c => new Car(c.image, c.speed, c.description, c.name, c.id));
     console.log(this.cars);
   }
