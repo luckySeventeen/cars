@@ -14,11 +14,14 @@ export class CarsComponent implements OnInit {
   cars: Car[] = [];
   searchText: string;
   roadParts: number;
-  carsList: any = [];
+  carsOnTrack: any = [];
+  speedLimits: any = [];
 
   constructor() {
     console.log(data);
     this.roadParts = data.distance / 5;
+    this.speedLimits = data.speed_limits;
+    console.log(this.speedLimits)
     this.cars = data.cars.map(c => new Car(c.image, c.speed, c.description, c.name, c.id));
     console.log(this.cars);
   }
@@ -29,19 +32,19 @@ export class CarsComponent implements OnInit {
 
   public addCarToList(item): void {
     if (item.isChecked) {
-      if (this.carsList.length < 3) {
-        this.carsList.push(item);
-        console.log(this.carsList);
+      if (this.carsOnTrack.length < 3) {
+        this.carsOnTrack.push(item);
+        console.log(this.carsOnTrack);
       } else {
         return;
       }
     } else {
-      for (let i = 0; i <= this.carsList.length; i++) {
-        if (this.carsList[i].id === item.id) {
-          this.carsList.splice(i, 1);
+      for (let i = 0; i <= this.carsOnTrack.length; i++) {
+        if (this.carsOnTrack[i].id === item.id) {
+          this.carsOnTrack.splice(i, 1);
         }
       }
-      console.log(this.carsList);
+      console.log(this.carsOnTrack);
     }
   }
 
@@ -49,6 +52,13 @@ export class CarsComponent implements OnInit {
     const top = (index * 100) + 10;
     return {
       top: top + 'px'
+    };
+  }
+
+  public signPosition(sign) {
+    const left = ((sign.position / 10) * 2) * 100;
+    return {
+      left: left + 'px'
     };
   }
 
