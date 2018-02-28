@@ -34,7 +34,9 @@
          *ngFor=" let car of carsOnTrack let ind = index"
          [ngStyle]=carPosition(car,ind)
     >
-      {{car.name}}
+      <div
+          [ngStyle]="{'background-image': 'url(' + car.image + ')'}"
+          class="car-picture"></div>
     </div>
     <div class="road-parts">
       <div class="road-part"
