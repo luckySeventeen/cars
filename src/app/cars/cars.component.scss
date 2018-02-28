@@ -55,14 +55,61 @@
     }
     .car-item {
       border: 2px solid black;
-      height: 8vw;
+      height: 10vw;
       border-radius: 10px;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: 50% 50%;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
+      transform-style: preserve-3d;
+      transition: all 1s ease-in-out;
+      &:hover {
+        transform: rotateX(180deg);
+      }
+      .front {
+        backface-visibility: hidden;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        position: absolute;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      .black-mask {
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .back {
+        transform: rotateX(180deg);
+        font-weight: bold;
+        .description {
+          text-transform: uppercase;
+          display: flex;
+          justify-content: flex-end;
+          color: #fff;
+          font-family: sans-serif;
+          span {
+            width: 90%;
+          }
+        }
+        .speed {
+          color: yellow;
+          font-family: sans-serif;
+        }
+      }
+      .check {
+        position: absolute;;
+        width: 100%;
+        height: 100%;
+      }
       .title {
         padding: 2px 5px;
         background-color: rgba(0, 0, 0, 0.2);

@@ -6,10 +6,23 @@
   <div class="cars-container">
     <div *ngFor="let item of cars | filter : searchText" class="car-container">
       <div
-        class="car-item"
-        [ngStyle]="{'background-image': 'url(' + item.image + ')'}"
-      >
-        <div class="title">{{item.name}}</div>
+        class="car-item">
+        <div
+          [ngStyle]="{'background-image': 'url(' + item.image + ')'}"
+          class="front">
+          <div class="title">{{item.name}}</div>
+        </div>
+        <div
+          [ngStyle]="{'background-image': 'url(' + item.image + ')'}"
+          class="front back">
+          <div class="black-mask">
+            <input class="check" type="checkbox"/>
+            <div class="description">
+              <span>{{item.description}}</span>
+            </div>
+            <div class="speed">Max speed: {{item.speed}}</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
