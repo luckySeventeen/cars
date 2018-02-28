@@ -1,11 +1,19 @@
-<div class="cars-container">
-  <div *ngFor="let item of cars" class="car-container">
-    <div
+<div class="cars">
+  <div class="search-container">
+    <input [(ngModel)]="searchText" class="search-input" type="text"/>
+    <button class="search-button"><i class="fa fa-search"></i></button>
+  </div>
+  <div class="cars-container">
+    <div *ngFor="let item of cars | filter : searchText" class="car-container">
+      <div
         class="car-item"
         [ngStyle]="{'background-image': 'url(' + item.image + ')'}"
-    >
-      <div class="title">{{item.name}}</div>
+      >
+        <div class="title">{{item.name}}</div>
+      </div>
     </div>
   </div>
 </div>
+
+
 

@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+
 import { Car } from './car';
 const data = require('./data.json');
 
@@ -10,6 +11,7 @@ const data = require('./data.json');
 export class CarsComponent implements OnInit {
 
   cars: Car[] = [];
+  searchText: string;
   constructor() {
     console.log(data);
     this.cars = data.cars.map(c => new Car(c.image, c.speed, c.description, c.name, c.id));
