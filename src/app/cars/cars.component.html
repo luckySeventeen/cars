@@ -65,7 +65,7 @@
   </div>
   <div class="start-container">
     <input [(ngModel)]="animationSpeed" class="speed-input" type="number"/>
-    <button (click)="moveCars()" class="start-btn">START</button>
+    <button [disabled]="carsOnTrack.length < 3" (click)="moveCars()" class="start-btn">START</button>
   </div>
 </div>
 

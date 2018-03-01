@@ -62,7 +62,7 @@ export class CarsComponent implements OnInit {
   }
   // TODO figure out better way to handle logic
   // TODO add car stop at traffic light
-  public moveCars() {
+  public moveCars(): void {
     const car1 = document.getElementById('car0');
     const car2 = document.getElementById('car1');
     const car3 = document.getElementById('car2');
@@ -130,7 +130,7 @@ export class CarsComponent implements OnInit {
     };
   }
 
-  public switchTrafficLight() {
+  public switchTrafficLight(): void {
     this.passTheLight = !this.passTheLight;
   }
 
