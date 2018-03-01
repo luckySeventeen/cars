@@ -53,19 +53,25 @@ export class CarsComponent implements OnInit {
 
   public carPosition(car, index) {
     const top = (index * 100) + 10;
-    setInterval(() => {
-      console.log('aaaa');
-    }, 100);
+    const left = 10;
     return {
-      top: top + 'px'
+      top: top + 'px',
+      left: left + 'px'
     };
   }
 
-public moveCars() {
+  public moveCars() {
     const car1 = document.getElementById('car0');
-    console.log(car1);
-    car1.style.left = '200';
-}
+    const car2 = document.getElementById('car1');
+    const car3 = document.getElementById('car2');
+    let newLeft = 0;
+    console.log(newLeft);
+    setInterval(() => {
+        newLeft += 100;
+        car1.style.left = newLeft + 'px';
+    }, 1000);
+
+  }
 
   public signPosition(sign) {
     const left = ((sign.position / 10) * 2) * 100;
