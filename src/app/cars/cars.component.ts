@@ -15,6 +15,7 @@ export class CarsComponent implements OnInit {
   searchText: string;
   roadParts: number;
   trafficLight: any;
+  animationSpeed: number;
   passTheLight = false;
   carsOnTrack: any = [];
   speedLimits: any = [];
@@ -59,17 +60,59 @@ export class CarsComponent implements OnInit {
       left: left + 'px'
     };
   }
-
+  // TODO figure out better way to handle logic
+  // TODO add car stop at traffic light
   public moveCars() {
     const car1 = document.getElementById('car0');
     const car2 = document.getElementById('car1');
     const car3 = document.getElementById('car2');
-    let newLeft = 0;
-    console.log(newLeft);
-    setInterval(() => {
-        newLeft += 100;
-        car1.style.left = newLeft + 'px';
-    }, 1000);
+    const firstSignPosition = ((this.speedLimits[0].position / 10) * 2) * 100;
+    const secondSignPosition = ((this.speedLimits[1].position / 10) * 2) * 100;
+    let firstCarLeft = 10;
+    let secondCarLeft = 10;
+    let thirdCarLeft = 10;
+    let firstCarSpeed = (this.carsOnTrack[0].speed) * 0.1;
+    let secondCarSpeed = (this.carsOnTrack[1].speed) * 0.1;
+    let thirdCarSpeed = (this.carsOnTrack[2].speed) * 0.1;
+    const firstCarInterval = setInterval(() => {
+      firstCarLeft += firstCarSpeed;
+      car1.style.left = firstCarLeft + 'px';
+      if (firstCarLeft >= firstSignPosition) {
+        firstCarSpeed = 6;
+      }
+      if (firstCarLeft >= secondSignPosition) {
+        firstCarSpeed = 8;
+      }
+      if (firstCarLeft >= 910) {
+        clearInterval(firstCarInterval);
+      }
+    }, this.animationSpeed);
+    const secondCarInterval = setInterval(() => {
+      secondCarLeft += secondCarSpeed;
+      car2.style.left = secondCarLeft + 'px';
+      if (secondCarLeft >= firstSignPosition) {
+        secondCarSpeed = 6;
+      }
+      if (firstCarLeft >= secondSignPosition) {
+        firstCarSpeed = 8;
+      }
+      if (secondCarLeft >= 910) {
+        clearInterval(secondCarInterval);
+      }
+    }, this.animationSpeed);
+    const thirdCarInterval = setInterval(() => {
+      thirdCarLeft += thirdCarSpeed;
+      car3.style.left = thirdCarLeft + 'px';
+      if (thirdCarLeft >= firstSignPosition) {
+        thirdCarSpeed = 6;
+      }
+      if (firstCarLeft >= secondSignPosition) {
+        firstCarSpeed = 8;
+      }
+      if (thirdCarLeft >= 910) {
+        clearInterval(thirdCarInterval);
+      }
+    }, this.animationSpeed);
 
   }
 
